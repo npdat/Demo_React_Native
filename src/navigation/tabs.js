@@ -13,10 +13,12 @@ import { AppStyles, AppSizes } from '@theme/';
 
 // Components
 import { TabIcon } from '@ui/';
+import { TabIconRemix } from '@ui/';
 import { NavbarMenuButton } from '@containers/ui/NavbarMenuButton/NavbarMenuButtonContainer';
 
 // Scenes
 import Placeholder from '@components/general/Placeholder';
+import About from '@components/general/About';
 import Error from '@components/general/Error';
 import StyleGuide from '@containers/StyleGuideView';
 import Recipes from '@containers/recipes/Browse/BrowseContainer';
@@ -33,56 +35,28 @@ const navbarPropsTabs = {
 
 /* Routes ==================================================================== */
 const scenes = (
-  <Scene key={'tabBar'} tabs tabBarIconContainerStyle={AppStyles.tabbar} pressOpacity={0.95}>
+  <Scene
+    {...navbarPropsTabs}
+    key={'recipes'}
+    title={'Recipes'}
+    icon={props => TabIcon({ ...props, icon: 'search' })}
+  >
     <Scene
       {...navbarPropsTabs}
-      key={'recipes'}
+      key={'recipesListing'}
+      component={Recipes}
       title={'Recipes'}
-      icon={props => TabIcon({ ...props, icon: 'search' })}
-    >
-      <Scene
-        {...navbarPropsTabs}
-        key={'recipesListing'}
-        component={Recipes}
-        title={'Recipes'}
-        analyticsDesc={'Recipes: Browse Recipes'}
-      />
-      <Scene
-        {...AppConfig.navbarProps}
-        key={'recipeView'}
-        component={RecipeView}
-        getTitle={props => ((props.title) ? props.title : 'View Recipe')}
-        analyticsDesc={'RecipeView: View Recipe'}
-      />
-    </Scene>
-
-    <Scene
-      key={'timeline'}
-      {...navbarPropsTabs}
-      title={'Coming Soon'}
-      component={Placeholder}
-      icon={props => TabIcon({ ...props, icon: 'timeline' })}
-      analyticsDesc={'Placeholder: Coming Soon'}
+      analyticsDesc={'Recipes: Browse Recipes'}
     />
-
     <Scene
-      key={'error'}
-      {...navbarPropsTabs}
-      title={'Example Error'}
-      component={Error}
-      icon={props => TabIcon({ ...props, icon: 'error' })}
-      analyticsDesc={'Error: Example Error'}
-    />
-
-    <Scene
-      key={'styleGuide'}
-      {...navbarPropsTabs}
-      title={'Style Guide'}
-      component={StyleGuide}
-      icon={props => TabIcon({ ...props, icon: 'speaker-notes' })}
-      analyticsDesc={'StyleGuide: Style Guide'}
+      {...AppConfig.navbarProps}
+      key={'recipeView'}
+      component={RecipeView}
+      getTitle={props => ((props.title) ? props.title : 'View Recipe')}
+      analyticsDesc={'RecipeView: View Recipe'}
     />
   </Scene>
+
 );
 
 export default scenes;
