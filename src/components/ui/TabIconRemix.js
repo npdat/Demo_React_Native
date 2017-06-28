@@ -9,7 +9,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Icon } from 'react-native-elements';
-
 import { AppColors } from '@theme/';
 
 /* Component ==================================================================== */
@@ -22,7 +21,11 @@ const TabIconRemix = ({ icon, source, selected }) => (
   />
 );
 
-TabIconRemix.propTypes = { icon: PropTypes.string.isRequired, selected: PropTypes.bool, type: PropTypes.string };
+TabIconRemix.propTypes = {
+  icon: PropTypes.string.isRequired,
+  selected: PropTypes.bool,
+  source: PropTypes.string };
+
 TabIconRemix.defaultProps = { icon: 'search', selected: false, source: 'font-awesome' };
 
 /* Export Component ==================================================================== */
