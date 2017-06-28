@@ -17,6 +17,7 @@ import { NavbarMenuButton } from '@containers/ui/NavbarMenuButton/NavbarMenuButt
 
 // Scenes
 import Placeholder from '@components/general/Placeholder';
+import About from '@components/general/About';
 import Error from '@components/general/Error';
 import StyleGuide from '@containers/StyleGuideView';
 import Recipes from '@containers/recipes/Browse/BrowseContainer';
@@ -55,15 +56,16 @@ const scenes = (
         analyticsDesc={'RecipeView: View Recipe'}
       />
     </Scene>
-    
+
     <Scene
-      key={'styleGuide'}
+      key={'timeline'}
       {...navbarPropsTabs}
-      title={'Style Guide'}
-      component={StyleGuide}
-      icon={props => TabIcon({ ...props, icon: 'speaker-notes' })}
-      analyticsDesc={'StyleGuide: Style Guide'}
+      title={'About Team'}
+      component={About}
+      icon={props => TabIcon({ ...props, icon: 'timeline' })}
+      analyticsDesc={'Placeholder: TMAProduct'}
     />
+
   </Scene>
 );
 
