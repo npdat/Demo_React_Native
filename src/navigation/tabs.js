@@ -35,39 +35,28 @@ const navbarPropsTabs = {
 
 /* Routes ==================================================================== */
 const scenes = (
-  <Scene key={'tabBar'} tabs tabBarIconContainerStyle={AppStyles.tabbar} pressOpacity={0.95}>
+  <Scene
+    {...navbarPropsTabs}
+    key={'recipes'}
+    title={'Recipes'}
+    icon={props => TabIcon({ ...props, icon: 'search' })}
+  >
     <Scene
       {...navbarPropsTabs}
-      key={'recipes'}
+      key={'recipesListing'}
+      component={Recipes}
       title={'Recipes'}
-      icon={props => TabIcon({ ...props, icon: 'search' })}
-    >
-      <Scene
-        {...navbarPropsTabs}
-        key={'recipesListing'}
-        component={Recipes}
-        title={'Recipes'}
-        analyticsDesc={'Recipes: Browse Recipes'}
-      />
-      <Scene
-        {...AppConfig.navbarProps}
-        key={'recipeView'}
-        component={RecipeView}
-        getTitle={props => ((props.title) ? props.title : 'View Recipe')}
-        analyticsDesc={'RecipeView: View Recipe'}
-      />
-    </Scene>
-
-    <Scene
-      key={'timeline'}
-      {...navbarPropsTabs}
-      title={'About Team'}
-      component={About}
-      icon={props => TabIconRemix({ ...props, icon: 'book' })}
-      analyticsDesc={'Placeholder: TMAProduct'}
+      analyticsDesc={'Recipes: Browse Recipes'}
     />
-
+    <Scene
+      {...AppConfig.navbarProps}
+      key={'recipeView'}
+      component={RecipeView}
+      getTitle={props => ((props.title) ? props.title : 'View Recipe')}
+      analyticsDesc={'RecipeView: View Recipe'}
+    />
   </Scene>
+
 );
 
 export default scenes;
