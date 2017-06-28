@@ -53,7 +53,7 @@ class Authenticate extends Component {
             title={'Login'}
             icon={{ name: 'lock' }}
             onPress={Actions.login}
-            backgroundColor={'#CB009E'}
+            backgroundColor={'#3b9792'}
           />
         </View>
       </View>
@@ -66,7 +66,7 @@ class Authenticate extends Component {
             title={'Sign up'}
             icon={{ name: 'face' }}
             onPress={Actions.signUp}
-            backgroundColor={'#CB009E'}
+            backgroundColor={'#3b9792'}
           />
         </View>
       </View>
