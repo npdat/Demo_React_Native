@@ -55,25 +55,7 @@ const scenes = (
         analyticsDesc={'RecipeView: View Recipe'}
       />
     </Scene>
-
-    <Scene
-      key={'timeline'}
-      {...navbarPropsTabs}
-      title={'Coming Soon'}
-      component={Placeholder}
-      icon={props => TabIcon({ ...props, icon: 'timeline' })}
-      analyticsDesc={'Placeholder: Coming Soon'}
-    />
-
-    <Scene
-      key={'error'}
-      {...navbarPropsTabs}
-      title={'Example Error'}
-      component={Error}
-      icon={props => TabIcon({ ...props, icon: 'error' })}
-      analyticsDesc={'Error: Example Error'}
-    />
-
+    
     <Scene
       key={'styleGuide'}
       {...navbarPropsTabs}
