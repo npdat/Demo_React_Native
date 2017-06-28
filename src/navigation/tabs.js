@@ -13,6 +13,7 @@ import { AppStyles, AppSizes } from '@theme/';
 
 // Components
 import { TabIcon } from '@ui/';
+import { TabIconRemix } from '@ui/';
 import { NavbarMenuButton } from '@containers/ui/NavbarMenuButton/NavbarMenuButtonContainer';
 
 // Scenes
@@ -62,7 +63,7 @@ const scenes = (
       {...navbarPropsTabs}
       title={'About Team'}
       component={About}
-      icon={props => TabIcon({ ...props, icon: 'timeline' })}
+      icon={props => TabIconRemix({ ...props, icon: 'book' })}
       analyticsDesc={'Placeholder: TMAProduct'}
     />
 
