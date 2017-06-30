@@ -41,6 +41,8 @@ const styles = StyleSheet.create({
     flex: 1,
     left: 0,
     right: 0,
+    height: 10,
+    justifyContent: 'flex-start',
     backgroundColor: MENU_BG_COLOR,
   },
 
@@ -82,13 +84,19 @@ const styles = StyleSheet.create({
   // Added by Huy
   // Absolute Position
   rowContainerTop: {
-    flex: 1,
     top: 10,
     right: 10,
     flexDirection: 'row',
     justifyContent: 'flex-end',
     backgroundColor: MENU_BG_COLOR,
+  },
+  avatarContainer: {
+    top: 30,
+    flexDirection: 'row',
+    justifyContent: 'center',
+    backgroundColor: MENU_BG_COLOR,
   }
+
 });
 
 /* Component ==================================================================== */
@@ -151,6 +159,10 @@ class Menu extends Component {
   /**
    * Build the Menu List
    */
+  _isLogin : function() {
+    return this.props.user && this.props.user.email; 
+  }
+  
   menuList = () => {
     // Determine which menu to use - authenticated user menu or unauthenicated version?
     let menu = this.props.unauthMenu;
@@ -159,27 +171,57 @@ class Menu extends Component {
     return menu.map(item => this.menuItem(item));
   }
 
+  _showTopItem = () => {
+    if(isLogin()){
+      return (<View style={styles.rowContainerTop}>
+                <TouchableOpacity
+                    onPress={this.logout}
+                    activeOpacity={0.7}
+                    style={{marginRight: 10}}
+                    hitSlop={{ top: 7, right: 7, bottom: 7, left: 7 }}>
+                    <Icon name={'ios-key'} size={30} color={'#FFF'} />
+                </TouchableOpacity>  
+                <TouchableOpacity
+                    onPress={this.logout}
+                    activeOpacity={0.7}
+                    hitSlop={{ top: 7, right: 7, bottom: 7, left: 7 }}>
+                    <Icon name={'ios-log-out'} size={30} color={'#FFF'} />
+                </TouchableOpacity>  
+              </View>);
+    }
+    else{
+      return null;
+    }
+  }
+
+  menuView = () => {
+    if(isLogin){
+      return null;
+    }
+    else{
+      return null;
+    }
+  }
+
   render = () => (
     <View style={[styles.container]}>
       
       <View style={[styles.backgroundFill]} />
 
       <View style={[styles.menuContainer]}>
-        <View style={styles.rowContainerTop}>
+        {this.showTopItem()}
+        <View style={styles.avatarContainer}>
           <TouchableOpacity
-              onPress={this.logout}
-              activeOpacity={0.7}
-              style={{marginRight: 10}}
-              hitSlop={{ top: 7, right: 7, bottom: 7, left: 7 }}>
-              <Icon name={'ios-key'} size={30} color={'#FFF'} />
-          </TouchableOpacity>  
-          <TouchableOpacity
-              onPress={this.logout}
-              activeOpacity={0.7}
-              hitSlop={{ top: 7, right: 7, bottom: 7, left: 7 }}>
-              <Icon name={'ios-log-out'} size={30} color={'#FFF'} />
+                onPress={this.logout}
+                activeOpacity={0.7}
+                hitSlop={{ top: 7, right: 7, bottom: 7, left: 7 }}>
+                <Icon name={'ios-contact'} size={150} color={'#FFF'} />
           </TouchableOpacity>  
         </View>
+      </View>
+
+      <View style={styles.filterContainer}>
+
       </View>
 
     </View>
