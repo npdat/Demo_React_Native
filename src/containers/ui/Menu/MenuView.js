@@ -13,6 +13,7 @@ import {
   TouchableOpacity,
 } from 'react-native';
 import { Actions } from 'react-native-router-flux';
+import Icon from 'react-native-vector-icons/Ionicons';
 
 // Consts and Libs
 import { AppStyles, AppSizes, AppColors } from '@theme/';
@@ -77,6 +78,17 @@ const styles = StyleSheet.create({
   menuBottom_text: {
     color: '#EEEFF0',
   },
+
+  // Added by Huy
+  // Absolute Position
+  rowContainerTop: {
+    flex: 1,
+    top: 10,
+    right: 10,
+    flexDirection: 'row',
+    justifyContent: 'flex-end',
+    backgroundColor: MENU_BG_COLOR,
+  }
 });
 
 /* Component ==================================================================== */
@@ -149,37 +161,27 @@ class Menu extends Component {
 
   render = () => (
     <View style={[styles.container]}>
+      
       <View style={[styles.backgroundFill]} />
 
       <View style={[styles.menuContainer]}>
-        <View style={[styles.menu]}>{this.menuList()}</View>
-
-        <View style={[styles.menuBottom]}>
-          {this.props.user && this.props.user.email ?
-            <View>
-              <Text
-                style={[
-                  styles.menuBottom_text,
-                  AppStyles.textCenterAligned,
-                ]}
-              >
-                Logged in as:{'\n'}
-                {this.props.user.email}
-              </Text>
-
-              <Spacer size={10} />
-
-              <View style={[AppStyles.paddingHorizontal, AppStyles.paddingVerticalSml]}>
-                <Button small title={'Log Out'} onPress={this.logout} />
-              </View>
-            </View>
-          :
-            <View style={[AppStyles.paddingHorizontal, AppStyles.paddingVerticalSml]}>
-              <Button small title={'Log In'} onPress={() => this.onPress(Actions.login)} />
-            </View>
-          }
+        <View style={styles.rowContainerTop}>
+          <TouchableOpacity
+              onPress={this.logout}
+              activeOpacity={0.7}
+              style={{marginRight: 10}}
+              hitSlop={{ top: 7, right: 7, bottom: 7, left: 7 }}>
+              <Icon name={'ios-key'} size={30} color={'#FFF'} />
+          </TouchableOpacity>  
+          <TouchableOpacity
+              onPress={this.logout}
+              activeOpacity={0.7}
+              hitSlop={{ top: 7, right: 7, bottom: 7, left: 7 }}>
+              <Icon name={'ios-log-out'} size={30} color={'#FFF'} />
+          </TouchableOpacity>  
         </View>
       </View>
+
     </View>
   )
 }
